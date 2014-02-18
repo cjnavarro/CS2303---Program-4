@@ -1,11 +1,6 @@
-/* 
-Author: Bob Kinicki
 
-Linked list code taken from Langsam, Augenstein & Tenebaum pp. 246-248 */
 
-// This is List.h
 #include <string>
-#define COL 5
 using namespace std;
 
 class List {
