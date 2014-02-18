@@ -1,4 +1,3 @@
-
 #include <string>
 using namespace std;
 
@@ -19,8 +18,6 @@ private:
 public:
   // prototypes for member functions
   List ();
-  ~List();
-  int error (string error_message);
   void insert(string newWord);
   void printList(); //prints the linked list showing the word, it's dupCount and lineCount
 };    //end class List
