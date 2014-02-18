@@ -13,7 +13,9 @@ class List {
 //  classic linked list struct
 private:
   struct lnode {
-    int info;
+    string word;
+    int dupCount;
+    string lineCount;
     struct lnode *next;
   };
   typedef struct lnode *ListPtr;
