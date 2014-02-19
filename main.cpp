@@ -35,12 +35,16 @@ int main()
         ifstream inputFile;
         openFile(inputFile);
 
+        int lineCount = 0;
         string line;
         string word;
         Queue<string> words;
 
         // While the file still has line
         while (getline(inputFile, line)) {
+                // Increment line counter
+                lineCount++;
+           
                 // Convert a line to lower case
                 toLowerCase(line);
 
