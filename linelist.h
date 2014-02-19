@@ -1,5 +1,4 @@
-
-
+#include <string>using namespace std;
 
 class LineList {
 
@@ -15,6 +14,7 @@ private:
   
   public:
   //Prototypes
+  LineList();
   void insert(int lineValue);
   void print_linelist(LineListPtr currentPtr);
 
