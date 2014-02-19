@@ -19,11 +19,11 @@ List::List() {
    of the value 'oldvalue' in the list and inserts a new node with
    value 'newvalue' following the node containing 'oldvalue".     */
 
-void List::insertAfter(int oldvalue, int newvalue) {
-  ListPtr p, q;
+void List::insert(string word, int lineNum) {
+  ListPtr previous, current;
 
   // traverse the list looking for the correct place to insertAfter
-  for (p = listptr; p != NULL && p->info != oldvalue; p = p->next)
+  for (previous = listptr; previous != NULL && previous->word. != oldvalue; p = p->next)
     ;
 
   // mistake oldvalue is not in list
