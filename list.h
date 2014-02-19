@@ -8,7 +8,7 @@ private:
   struct lnode {
     string word;
     int dupCount; //counts the number of times the word is found in the text
-    string lineCount; //keeps track of the lines that contain the word
+    lineListPtr lineCount; //keeps track of the lines that contain the word
     struct lnode *next;
   };
   typedef struct lnode *ListPtr;
@@ -18,6 +18,6 @@ private:
 public:
   // prototypes for member functions
   List ();
-  void insert(string newWord);
+  void insert(string newWord, int lineCount);
   void printList(); //prints the linked list showing the word, it's dupCount and lineCount
 };    //end class List
