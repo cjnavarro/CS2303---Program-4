@@ -89,21 +89,3 @@ void List::deleteList(int oldvalue) {
   delete p;
 }
 
-// pop deletes the first node on the list and returns its contents.
-
-int List::pop() {
-  ListPtr p;
-  int x;
-  // cannot pop - list is empty
-  if(listptr == NULL)
-    error("ERROR: the list is empty.");
-
-  // adjust pointers and delete front node
-  p = listptr;
-  listptr = p->next;
-  x = p->info;
-  delete p;
-
-  // return value at front of the list
-  return x;
-}
