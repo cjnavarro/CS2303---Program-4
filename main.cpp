@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
-#include "List.h"
+#include "list.h"
 
 
 using namespace std;
