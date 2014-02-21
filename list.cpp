@@ -1,3 +1,10 @@
+/*
+ * File: list.cpp
+ * --------------
+ * This file exports the List class, a collection 
+ * in which values are arranged in predefined order
+ */
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -7,14 +14,24 @@
 
 using namespace std;
 
-/* List is a default constructor that initializes a newly
-   created list to the empty list.                  */
-
+/*
+ * Constructor: List
+ * Usage: List list
+ * ------------------
+ * Initialize a new empty list.
+ */
 List::List() {
   listPtr = NULL;
 }
 
-//Inserts the new word into the list, checking for duplicates
+/*
+ * Method: insert
+ * Usage: list.insert(word, lineNumber)
+ * --------------------------------
+ * Inserts the new word and its line number into the list if
+ * it is not existed. Otherwise, increment the existed word's
+ * counter and add its new line number.
+ */
 void List::insert(string word, int lineNum) {
   ListPtr newPtr, previousPtr, currentPtr;
 
@@ -22,7 +39,6 @@ void List::insert(string word, int lineNum) {
   ss << lineNum;
   
   string lineString = ss.str();
-
   
   newPtr = new lnode;
   newPtr->word = word;
@@ -49,14 +65,12 @@ void List::insert(string word, int lineNum) {
 				previousPtr->next = newPtr;
 				newPtr->next = currentPtr;
 			}
-		}
-	else{
+		} else {
 		while(currentPtr != NULL && word != currentPtr->word){
 			currentPtr = currentPtr->next;
 		}
 		(currentPtr->count)++;
-		(currentPtr->lineCount) += ", ";
-		(currentPtr->lineCount) += lineString; 
+		(currentPtr->lineCount) += ", " + lineString; 
 	}
 }
 
