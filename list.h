@@ -1,23 +1,26 @@
 #include <string>
+
 using namespace std;
 
 class List {
 
-//  classic linked list struct
+//Self referential linked-list structure
 private:
   struct lnode {
     string word;
-    int dupCount; //counts the number of times the word is found in the text
-    lineListPtr lineCount; //keeps track of the lines that contain the word
+	int count;
+	struct llnode *llist;
     struct lnode *next;
   };
   typedef struct lnode *ListPtr;
-  // This declares a member that is the pointer to the linked list 
-  ListPtr listptr;
+
+  ListPtr listPtr;
 
 public:
   // prototypes for member functions
   List ();
-  void insert(string newWord, int lineCount);
-  void printList(); //prints the linked list showing the word, it's dupCount and lineCount
-};    //end class List
+  void insert(string word, int lineNum);
+  void print_list();
+  bool not_in_list(string word);
+}; 
+
