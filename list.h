@@ -1,3 +1,4 @@
+
 #include <string>
 
 using namespace std;
@@ -9,7 +10,7 @@ private:
   struct lnode {
     string word;
 	int count;
-	struct llnode *llist;
+	string lineCount;
     struct lnode *next;
   };
   typedef struct lnode *ListPtr;
