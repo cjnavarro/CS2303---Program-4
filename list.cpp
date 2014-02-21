@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "list.h"
-#include "line.h"
 
 using namespace std;
 
@@ -18,10 +18,16 @@ List::List() {
 void List::insert(string word, int lineNum) {
   ListPtr newPtr, previousPtr, currentPtr;
 
+  std::stringstream ss;
+  ss << lineNum;
+  
+  string lineString = ss.str();
+
+  
   newPtr = new lnode;
   newPtr->word = word;
   newPtr->count = 1;
-  //newPtr->list = (newPtr->llist).insert(lineNum);
+  newPtr->lineCount = lineString;
   newPtr->next = NULL;
   
   
@@ -49,7 +55,8 @@ void List::insert(string word, int lineNum) {
 			currentPtr = currentPtr->next;
 		}
 		(currentPtr->count)++;
-		//currentPtr->llist = (newPtr->&llist).insert(lineNum);
+		(currentPtr->lineCount) += ", ";
+		(currentPtr->lineCount) += lineString; 
 	}
 }
 
@@ -77,7 +84,8 @@ void List::print_list(){
 
   while (p != NULL)
   {
-      cout << "Word: " << p->word << " | Word Count: " << p->count << "\n";
+      cout << "Word: " << p->word << " | Word Count: " << p->count << " | Line Count: " 
+			<< p->lineCount << "\n";
       p = p->next;
   }
   cout << "End of List\n" ;
