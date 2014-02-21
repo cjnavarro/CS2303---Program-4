@@ -1,10 +1,9 @@
-/*Note - very concise for loops came from Langsam  */
-
-#include "List.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include "list.h"
+#include "line.h"
 
 using namespace std;
 
@@ -12,80 +11,76 @@ using namespace std;
    created list to the empty list.                  */
 
 List::List() {
-  listptr = NULL;
+  listPtr = NULL;
 }
 
-/* insertAfter(oldvalue, newvalue) searches for the first occurrence
-   of the value 'oldvalue' in the list and inserts a new node with
-   value 'newvalue' following the node containing 'oldvalue".     */
-
+//Inserts the new word into the list, checking for duplicates
 void List::insert(string word, int lineNum) {
-  ListPtr previous, current;
+  ListPtr newPtr, previousPtr, currentPtr;
 
-  // traverse the list looking for the correct place to insertAfter
-  for (previous = listptr; previous != NULL && previous->word. != oldvalue; p = p->next)
-    ;
+  newPtr = new lnode;
+  newPtr->word = word;
+  newPtr->count = 1;
+  //newPtr->list = (newPtr->llist).insert(lineNum);
+  newPtr->next = NULL;
+  
+  
+  previousPtr = NULL;
+  currentPtr = listPtr;
+  
+	if(not_in_list(word)){
+		while(currentPtr != NULL && word.compare(currentPtr->word) > 0){
+			previousPtr = currentPtr;
+			currentPtr = currentPtr->next;
+		}
 
-  // mistake oldvalue is not in list
-  if (p == NULL)
-     error("ERROR: value is not on the list.");
+		if(previousPtr == NULL){
+			newPtr->next = listPtr;
+			listPtr = newPtr;
+			
+		}
+		else{
+				previousPtr->next = newPtr;
+				newPtr->next = currentPtr;
+			}
+		}
+	else{
+		while(currentPtr != NULL && word != currentPtr->word){
+			currentPtr = currentPtr->next;
+		}
+		(currentPtr->count)++;
+		//currentPtr->llist = (newPtr->&llist).insert(lineNum);
+	}
+}
 
-  // allocate a new lnode and fix pointers
-  q = new lnode;
-  q->info = newvalue;
-  q->next = p->next;
-  p->next = q;
+//Checks if the word exist already in the list
+bool List::not_in_list(string word){
+	
+	ListPtr currentPtr;
+	currentPtr = listPtr;
+
+	while(currentPtr != NULL && word != currentPtr->word){
+		currentPtr = currentPtr->next;
+	}
+	if(currentPtr == NULL){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 // function prints the current list members in order in five columns
-void List::printList(){
+void List::print_list(){
   ListPtr p;
-  int count = 1;
-  p = listptr;
+  p = listPtr;
 
   while (p != NULL)
   {
-    if (count % COL)
-      cout << "list[" << count << "] = " << p->info << ", " ;
-    else
-      cout << "list[" << count << "] = " << p->info << endl ;
-    count++;
-    p = p->next;
+      cout << "Word: " << p->word << " | Word Count: " << p->count << "\n";
+      p = p->next;
   }
   cout << "End of List\n" ;
 }
 
-// push(newvalue) adds a new node with a given newvalue to the front of the list.
-void List::push(int newvalue) {
-  ListPtr p;
-
-  p = new lnode;
-  p->info = newvalue;
-  p->next = listptr;
-  listptr = p;
-}
-
-// delete(oldvalue) deletes the first node containing the value oldvalue from the list.
-
-void List::deleteList(int oldvalue) {
-  ListPtr p, q;
-
-  // search the list for 'oldvalue'
-  for (q=0, p=listptr; p != NULL && p->info != oldvalue; q=p, p=p->next)
-    ;
-
-  // 'oldvalue' was not found in the list
-  if (p == NULL)
-    error("ERROR: value to be deleted is not on the list.");
-
-  // either 'oldvalue' is at the front of list
-  if (q == NULL)
-    listptr = p->next;
-  // or somewhere else
-  else
-    q->next = p->next;
-
-  // either way, delete the node
-  delete p;
-}
 
